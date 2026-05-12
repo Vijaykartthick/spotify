@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
+:root {
+    --spotify-black: #000000;
+    --spotify-dark-gray: #121212;
+    --spotify-light-gray: #181818;
+    --spotify-hover-gray: #282828;
+    --spotify-green: #1DB954;
+    --spotify-green-hover: #1ed760;
+    --text-main: #FFFFFF;
+    --text-sub: #b3b3b3;
+    --sidebar-width: 240px;
+    --player-height: 90px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--spotify-black);
+    color: var(--text-main);
+    overflow: hidden;
+    height: 100vh;
+}
+
+.container {
+    display: grid;
+    grid-template-areas: 
+        "sidebar main"
+        "player player";
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-rows: 1fr var(--player-height);
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    grid-area: sidebar;
+    background-color: var(--spotify-black);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.logo img {
+    width: 130px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 20px;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    padding: 10px 0;
+    color: var(--text-sub);
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-links li:hover {
+    color: var(--text-main);
+}
+
+.nav-links li.active {
+    color: var(--text-main);
+}
+
+.nav-links.secondary li {
+    font-size: 14px;
+    padding: 6px 0;
+    font-weight: 400;
+}
+
+.library {
+    border-top: 1px solid #282828;
+    padding-top: 20px;
+    flex-grow: 1;
+}
+
+.library-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-sub);
+    margin-bottom: 20px;
+}
+
+/* Main Content */
+.main-view {
+    grid-area: main;
+    background: linear-gradient(to bottom, #222222, var(--spotify-dark-gray));
+    padding: 20px 32px;
+    overflow-y: auto;
+    position: relative;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    position: sticky;
+    top: 0;
+    background: transparent;
+    z-index: 10;
+}
+
+.nav-btns {
+    display: flex;
+    gap: 16px;
+}
+
+.nav-circle {
+    width: 32px;
+    height: 32px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 50%;
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.search-container {
+    background-color: #242424;
+    border-radius: 500px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 364px;
+    border: 1px solid transparent;
+    transition: border 0.2s;
+}
+
+.search-container:hover {
+    background-color: #2a2a2a;
+    border: 1px solid #333;
+}
+
+.search-container input {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    font-size: 14px;
+    outline: none;
+}
+
+.user-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hero {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+}
+
+.hero h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.song-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+}
+
+.song-card {
+    background-color: var(--spotify-light-gray);
+    padding: 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.song-card:hover {
+    background-color: var(--spotify-hover-gray);
+}
+
+.img-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.song-card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    display: block;
+}
+
+.play-btn-overlay {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    width: 48px;
+    height: 48px;
+    background-color: var(--spotify-green);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    color: black;
+    font-size: 18px;
+}
+
+.play-btn-overlay:hover {
+    transform: scale(1.05) !important;
+    background-color: var(--spotify-green-hover);
+}
+
+.song-card:hover .play-btn-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.song-card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-card p {
+    color: var(--text-sub);
+    font-size: 14px;
+}
+
+.song-card.active {
+    background-color: var(--spotify-hover-gray);
+}
+
+.song-card.active h3 {
+    color: var(--spotify-green);
+}
+
+.artist-card {
+    background-color: var(--spotify-light-gray);
+    padding: 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    text-align: center;
+}
+
+.artist-card:hover {
+    background-color: var(--spotify-hover-gray);
+}
+
+.artist-card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.artist-card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.artist-card p {
+    color: var(--text-sub);
+    font-size: 14px;
+}
+
+/* Player Bar */
+.player-bar {
+    grid-area: player;
+    background-color: var(--spotify-black);
+    border-top: 1px solid #282828;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+}
+
+.current-track {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 30%;
+}
+
+.current-track img {
+    width: 56px;
+    height: 56px;
+    border-radius: 4px;
+}
+
+.track-info h4 {
+    font-size: 14px;
+}
+
+.track-info p {
+    font-size: 11px;
+    color: var(--text-sub);
+}
+
+.player-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 40%;
+}
+
+.control-btns {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.control-btns i {
+    color: var(--text-sub);
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.control-btns i:hover {
+    color: var(--text-main);
+}
+
+.play-pause-btn {
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black !important;
+}
+
+.play-pause-btn:hover {
+    transform: scale(1.05);
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 4px;
+    background-color: #4d4d4d;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--text-main);
+    border-radius: 2px;
+    width: 0%;
+}
+
+.progress-bar:hover .progress-fill {
+    background-color: var(--spotify-green);
+}
+
+.time {
+    font-size: 11px;
+    color: var(--text-sub);
+    min-width: 35px;
+}
+
+.volume-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 30%;
+    justify-content: flex-end;
+}
+
+.volume-bar {
+    width: 100px;
+    height: 4px;
+    background-color: #4d4d4d;
+    border-radius: 2px;
+}
+
+/* Custom Icons */
+.play-pause-btn::before {
+    content: '▶';
+    font-size: 14px;
+}
+
+.playing .play-pause-btn::before {
+    content: '⏸';
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}

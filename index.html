@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Web Player: Music for everyone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png" alt="Spotify">
+            </div>
+            <ul class="nav-links">
+                <li id="nav-home" class="active"><i class="fas fa-home"></i> Home</li>
+                <li id="nav-search"><i class="fas fa-search"></i> Search</li>
+                <li><i class="fas fa-book"></i> Your Library</li>
+            </ul>
+            <div class="library">
+                <div class="library-header">
+                    <span>PLAYLISTS</span>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><i class="fas fa-plus-square"></i> Create Playlist</li>
+                    <li><i class="fas fa-heart"></i> Liked Songs</li>
+                    <li>Your Episodes</li>
+                </ul>
+            </div>
+            <div class="playlists-list">
+                <ul class="nav-links secondary">
+                    <li>Top Hits 2024</li>
+                    <li>Dance Party</li>
+                    <li>Chill Vibes</li>
+                    <li>SouthMelody Essentials</li>
+                    <li>Workout Mix</li>
+                    <li>Discover Weekly</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-view">
+            <header>
+                <div class="nav-btns">
+                    <button class="nav-circle"><i class="fas fa-chevron-left"></i></button>
+                    <button class="nav-circle"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="search-container" id="search-container" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="What do you want to play?">
+                </div>
+                <div class="user-controls">
+                    <button class="nav-circle"><i class="fas fa-user"></i></button>
+                </div>
+            </header>
+
+            <section class="hero">
+                <h1>Good evening</h1>
+                <div class="song-grid">
+                    <div class="song-card" data-index="0">
+                        <div class="img-container">
+                            <img src="assets/art5.png" alt="Tum Tum">
+                            <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3>Tum Tum</h3>
+                        <p>SouthMelody</p>
+                    </div>
+                    <div class="song-card" data-index="1">
+                        <div class="img-container">
+                            <img src="assets/art2.png" alt="Uyire Uyire">
+                            <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3>Uyire Uyire</h3>
+                        <p>SouthMelody</p>
+                    </div>
+                    <div class="song-card" data-index="2">
+                        <div class="img-container">
+                            <img src="assets/art1.png" alt="SAMBAVA CLUB">
+                            <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3>SAMBAVA CLUB</h3>
+                        <p>SouthMelody</p>
+                    </div>
+                    <div class="song-card" data-index="3">
+                        <div class="img-container">
+                            <img src="assets/art3.png" alt="IMAYE">
+                            <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3>IMAYE</h3>
+                        <p>SouthMelody</p>
+                    </div>
+                    <div class="song-card" data-index="4">
+                        <div class="img-container">
+                            <img src="assets/art4.png" alt="Pesum Mazhai">
+                            <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3>Pesum Mazhai</h3>
+                        <p>SouthMelody</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="recommended">
+                <h2>Made For You</h2>
+                <div class="song-grid">
+                    <div class="song-card" data-index="3">
+                        <div class="img-container">
+                            <img src="assets/art3.png" alt="IMAYE">
+                            <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3>IMAYE</h3>
+                        <p>SouthMelody</p>
+                    </div>
+                    <div class="song-card" data-index="4">
+                        <div class="img-container">
+                            <img src="assets/art4.png" alt="Pesum Mazhai">
+                            <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3>Pesum Mazhai</h3>
+                        <p>SouthMelody</p>
+                    </div>
+                    <div class="song-card" data-index="0">
+                        <div class="img-container">
+                            <img src="assets/art5.png" alt="Tum Tum">
+                            <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3>Tum Tum (Remix)</h3>
+                        <p>SouthMelody</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="recommended">
+                <h2>Recently Played</h2>
+                <div class="song-grid">
+                    <div class="song-card" data-index="1">
+                        <div class="img-container">
+                            <img src="assets/art2.png" alt="Uyire Uyire">
+                            <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3>Uyire Uyire</h3>
+                        <p>SouthMelody</p>
+                    </div>
+                    <div class="song-card" data-index="2">
+                        <div class="img-container">
+                            <img src="assets/art1.png" alt="SAMBAVA CLUB">
+                            <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3>SAMBAVA CLUB</h3>
+                        <p>SouthMelody</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="recommended">
+                <h2>Popular Artists</h2>
+                <div class="song-grid">
+                    <div class="artist-card">
+                        <img src="https://ui-avatars.com/api/?name=South+Melody&background=1DB954&color=fff&size=200" alt="SouthMelody">
+                        <h3>SouthMelody</h3>
+                        <p>Artist</p>
+                    </div>
+                    <div class="artist-card">
+                        <img src="https://ui-avatars.com/api/?name=Daily+Mix&background=444&color=fff&size=200" alt="Daily Mix">
+                        <h3>Daily Mix</h3>
+                        <p>Curated for you</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Player Bar -->
+        <footer class="player-bar">
+            <div class="current-track">
+                <img id="current-art" src="assets/art1.png" alt="Current Track">
+                <div class="track-info">
+                    <h4 id="current-title">SAMBAVA CLUB</h4>
+                    <p id="current-artist">SouthMelody</p>
+                </div>
+                <i class="far fa-heart"></i>
+            </div>
+
+            <div class="player-controls">
+                <div class="control-btns">
+                    <i class="fas fa-random"></i>
+                    <i id="prev-btn" class="fas fa-step-backward"></i>
+                    <div id="play-pause-container" class="play-pause-btn">
+                        <i id="play-pause-icon" class="fas fa-play"></i>
+                    </div>
+                    <i id="next-btn" class="fas fa-step-forward"></i>
+                    <i class="fas fa-redo"></i>
+                </div>
+                <div class="progress-container">
+                    <span class="time" id="current-time">0:00</span>
+                    <div class="progress-bar" id="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span class="time" id="total-time">0:00</span>
+                </div>
+            </div>
+
+            <div class="volume-controls">
+                <i class="fas fa-volume-up"></i>
+                <div class="volume-bar">
+                    <div class="progress-fill" style="width: 70%;"></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
