@@ -35,7 +35,6 @@ let currentSongIndex = 0;
 let isPlaying = false;
 const audio = new Audio(songs[currentSongIndex].url);
 
-// Elements
 const playPauseBtn = document.getElementById('play-pause-container');
 const playPauseIcon = document.getElementById('play-pause-icon');
 const prevBtn = document.getElementById('prev-btn');
@@ -49,7 +48,6 @@ const trackTitle = document.getElementById('current-title');
 const trackArtist = document.getElementById('current-artist');
 const songCards = document.querySelectorAll('.song-card');
 
-// Load song
 function loadSong(index) {
     const song = songs[index];
     audio.src = song.url;
@@ -57,15 +55,13 @@ function loadSong(index) {
     trackTitle.innerText = song.title;
     trackArtist.innerText = song.artist;
     
-    // Reset progress
+
     progressFill.style.width = '0%';
     currentTimeEl.innerText = '0:00';
 
-    // Update active UI
     updateActiveCard(index);
 }
 
-// Update active card highlighting
 function updateActiveCard(index) {
     songCards.forEach((card, i) => {
         if (i === index) {
@@ -76,7 +72,6 @@ function updateActiveCard(index) {
     });
 }
 
-// Play/Pause
 function togglePlay() {
     if (isPlaying) {
         audio.pause();
@@ -88,12 +83,10 @@ function togglePlay() {
     isPlaying = !isPlaying;
 }
 
-// Update progress
 audio.addEventListener('timeupdate', () => {
     const progress = (audio.currentTime / audio.duration) * 100;
     progressFill.style.width = `${progress}%`;
-    
-    // Format time
+
     const currentMin = Math.floor(audio.currentTime / 60);
     const currentSec = Math.floor(audio.currentTime % 60);
     currentTimeEl.innerText = `${currentMin}:${currentSec.toString().padStart(2, '0')}`;
@@ -105,7 +98,7 @@ audio.addEventListener('timeupdate', () => {
     }
 });
 
-// Seek
+
 progressBar.addEventListener('click', (e) => {
     const width = progressBar.clientWidth;
     const clickX = e.offsetX;
@@ -113,7 +106,6 @@ progressBar.addEventListener('click', (e) => {
     audio.currentTime = (clickX / width) * duration;
 });
 
-// Controls
 playPauseBtn.addEventListener('click', togglePlay);
 
 prevBtn.addEventListener('click', () => {
@@ -127,8 +119,6 @@ nextBtn.addEventListener('click', () => {
     loadSong(currentSongIndex);
     if (isPlaying) audio.play();
 });
-
-// Search & Navigation
 const navHome = document.getElementById('nav-home');
 const navSearch = document.getElementById('nav-search');
 const searchContainer = document.getElementById('search-container');
@@ -149,7 +139,6 @@ navHome.addEventListener('click', () => {
     searchContainer.style.display = 'none';
     heroTitle.innerText = 'Good evening';
     
-    // Show all songs
     songCards.forEach(card => card.style.display = 'block');
 });
 
@@ -166,7 +155,6 @@ searchInput.addEventListener('input', (e) => {
     });
 });
 
-// Click on card to play
 songCards.forEach(card => {
     card.addEventListener('click', () => {
         const index = parseInt(card.getAttribute('data-index'));
@@ -177,10 +165,10 @@ songCards.forEach(card => {
     });
 });
 
-// Auto next
+
 audio.addEventListener('ended', () => {
     nextBtn.click();
 });
 
-// Initialize
+
 loadSong(currentSongIndex);
