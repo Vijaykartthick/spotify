@@ -37,7 +37,6 @@ body {
     height: 100vh;
 }
 
-/* Sidebar */
 .sidebar {
     grid-area: sidebar;
     background-color: var(--spotify-black);
@@ -96,7 +95,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Main Content */
 .main-view {
     grid-area: main;
     background: linear-gradient(to bottom, #222222, var(--spotify-dark-gray));
@@ -298,7 +296,6 @@ header {
     font-size: 14px;
 }
 
-/* Player Bar */
 .player-bar {
     grid-area: player;
     background-color: var(--spotify-black);
@@ -419,7 +416,6 @@ header {
     border-radius: 2px;
 }
 
-/* Custom Icons */
 .play-pause-btn::before {
     content: '▶';
     font-size: 14px;
